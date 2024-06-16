@@ -27,7 +27,6 @@ import { Button } from '@/components/ui/button'
 import { FileUpload } from '@/components/file-upload'
 import { useRouter } from 'next/navigation'
 
-
 const formSchema = z.object({
   name: z.string().min(1, {
     message: 'Server name is required.',
@@ -58,10 +57,7 @@ export const InitialModal = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-     
-     
       await axios.post('/api/servers', values)
-      
 
       console.log('ffeeeeef')
 
@@ -105,6 +101,7 @@ export const InitialModal = () => {
                           onChange={field.onChange}
                         />
                       </FormControl>
+                      <FormMessage />
                     </FormItem>
                   )}
                 />
