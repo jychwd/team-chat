@@ -1,10 +1,10 @@
-"use client"
+'use client'
 import { useParams } from 'next/navigation'
 import axios from 'axios'
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-import qs from "query-string"
+import qs from 'query-string'
 import {
   Dialog,
   DialogContent,
@@ -30,7 +30,6 @@ const formSchema = z.object({
   name: z.string().min(1, {
     message: 'channel name is required.',
   }),
-  serverId: z.string(),
 })
 
 export const CreateChannelModal = () => {
@@ -44,7 +43,7 @@ export const CreateChannelModal = () => {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: ''
+      name: '',
     },
   })
 
@@ -54,7 +53,7 @@ export const CreateChannelModal = () => {
     try {
       const url = qs.stringifyUrl({
         url: '/api/channels',
-        query: { serverId }
+        query: { serverId },
       })
       await axios.post(url, values)
 
